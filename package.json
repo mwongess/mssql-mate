@@ -1,0 +1,25 @@
+{
+  "name": "mssql-mate",
+  "version": "1.0.0",
+  "description": "Easily connect, query and execute procedured.Have fun!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwongess/mssql-mate.git"
+  },
+  "keywords": [
+    "typescript",
+    "mssql",
+    "storedprocedures",
+    "queries"
+  ],
+  "author": "Amos Mwongela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mwongess/mssql-mate/issues"
+  },
+  "homepage": "https://github.com/mwongess/mssql-mate#readme"
+}
