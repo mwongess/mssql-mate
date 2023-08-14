@@ -21,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/mwongess/mssql-mate/issues"
   },
-  "homepage": "https://github.com/mwongess/mssql-mate#readme"
+  "homepage": "https://github.com/mwongess/mssql-mate#readme",
+  "dependencies": {
+    "mssql": "^9.1.3"
+  },
+  "devDependencies": {
+    "@types/mssql": "^8.1.2"
+  }
 }
