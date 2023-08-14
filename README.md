@@ -2,6 +2,11 @@
 
 An exciting npm package ,empowering effortless connectivity, seamless querying, and the smooth execution of procedures within an SQL Server database. Enjoy the power and ease! 🔥🎉
 
+![stars](https://img.shields.io/github/stars/mwongess/mssq-mate) ![Forks](https://img.shields.io/github/forks/mwongess/mssq-mate)
+![Issues](https://img.shields.io/github/issues/mwongess/mssq-mate) ![Closed](https://img.shields.io/github/issues-closed/mwongess/mssq-mate)
+![Closed PR](https://img.shields.io/github/issues-pr-closed/mwongess/mssq-mate) ![Version](https://img.shields.io/github/v/release/mwongess/mssq-mate)
+![Downloads](https://img.shields.io/github/downloads/mwongess/mssq-mate/total)
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -55,6 +60,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Support
 
-If you need help or have questions, you can reach out to us at [amosmwongelah@outlook.com](amosmwongelah@outlook.com).
+Open up an issue 😛
+
+but before you do that:
+
+- confirm you're on the latest version of mssql-mate
+- confirm there is no other issue mentioning the same problem
 
 ---
