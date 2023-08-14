@@ -1,8 +1,8 @@
 {
-  "name": "mssql-mate",
+  "name": "@mwongess/mssql-mate",
   "version": "1.0.0",
   "description": "Easily connect, query and execute procedured.Have fun!",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
