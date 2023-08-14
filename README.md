@@ -19,11 +19,28 @@ $ npm install mssql-mate
 ## Usage
 
 ```javascript
+// Importing mssql-mate package
 const Connection = require('mssql-mate');
 
+// Your typical config /*REQUIRED*/
+const dbConfig = {
+  user: "username",
+  password: "password",
+  server: "server",
+  database: "database",
+  options: {
+    encrypt: false,
+    trustServerCertificate: true,
+  },
+}
+
 // Connect to db
-const db = new Connection(your dbConfig);
+const db = new Connection(dbConfig);
+
+//
+const {recorset} = await db.executeProc("procedureName")
 ```
+
 ## Contributing
 
 1. Fork the repository.
