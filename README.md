@@ -5,8 +5,7 @@ An exciting npm package ,empowering effortless connectivity, seamless querying, 
 ![stars](https://img.shields.io/github/stars/mwongess/mssql-mate) ![Forks](https://img.shields.io/github/forks/mwongess/mssql-mate)
 ![Issues](https://img.shields.io/github/issues/mwongess/mssql-mate) ![Closed](https://img.shields.io/github/issues-closed/mwongess/mssql-mate)
 ![Closed PR](https://img.shields.io/github/issues-pr-closed/mwongess/mssql-mate) ![Version](https://img.shields.io/github/v/release/mwongess/mssql-mate)
-![Test Status](https://img.shields.io/github/actions/workflow/status/wdaan/vuetorrent/test.yml)
-![Downloads](https://img.shields.io/github/downloads/WDaan/VueTorrent/total)
+![Downloads](https://img.shields.io/github/downloads/mwongess/mssql-mate/total)
 
 ## Table of Contents
 
