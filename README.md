@@ -11,7 +11,6 @@ An exciting npm package ,empowering effortless connectivity, seamless querying, 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -27,7 +26,7 @@ $ npm install mssql-mate
 // Importing mssql-mate package
 const Connection = require('mssql-mate');
 
-// Your typical config /*REQUIRED*/
+// Your typical config 
 const dbConfig = {
   user: "username",
   password: "password",
@@ -42,8 +41,17 @@ const dbConfig = {
 // Connect to db
 const db = new Connection(dbConfig);
 
-//
-const {recorset} = await db.executeProc("procedureName")
+// Executing a procedure with:
+// 1. zero(0) parameters
+const {recordset} = await db.executeProc("procedureName")
+// 2. one or many parameters
+const {recordset} = await db.executeProc("procedureName", {param1, param2,})
+
+// Executing a query with:
+// 1. zero(0) parameteres
+const {recordset} = await db.executeQuery("SELECT * FROM shema.tableName")
+// 2. one or many parameters
+const {recordset} = await db.executeQuery("SELECT * FROM shema.tableName WHERE price = @price", {price})
 ```
 
 ## Contributing
