@@ -41,17 +41,26 @@ const dbConfig = {
 // Connect to db
 const db = new Connection(dbConfig);
 
-// Executing a procedure with:
-// 1. zero(0) parameters
-const {recordset} = await db.executeProc("procedureName")
-// 2. one or many parameters
-const {recordset} = await db.executeProc("procedureName", {param1, param2,})
+export const getProducts = async(req, res) => {
+  try{
+    const {price} = req.body
 
-// Executing a query with:
-// 1. zero(0) parameteres
-const {recordset} = await db.executeQuery("SELECT * FROM shema.tableName")
-// 2. one or many parameters
-const {recordset} = await db.executeQuery("SELECT * FROM shema.tableName WHERE price = @price", {price})
+    // Executing a procedure with:
+    // 1. zero(0) parameters
+    const {recordset} = await db.executeProc("procedureName")
+    // 2. one or many parameters
+    const {recordset} = await db.executeProc("procedureName", {price})
+
+    // Executing a query with:
+    // 1. zero(0) parameteres
+    const {recordset} = await db.executeQuery("SELECT * FROM shema.tableName")
+    // 2. one or many parameters
+    const {recordset} = await db.executeQuery("SELECT * FROM products WHERE price = @price", {price})
+  }catch(error){
+    res.json(error.message)
+  }
+}
+
 ```
 
 ## Contributing
