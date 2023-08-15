@@ -27,7 +27,6 @@ describe("Integration Tests", () => {
     // Create a real connection to the database
     const connection = new Connection(config);
 
-    // Replace 'YourStoredProcedure' with the actual stored procedure name
     const procName = "GetUser";
     const params = { userName: "mwongess"};
 
