@@ -1,4 +1,5 @@
-export interface Config {
+declare module "mssql-mate" {
+  export interface Config {
     user: string;
     password: string;
     server: string;
@@ -8,3 +9,4 @@ export interface Config {
       trustServerCertificate: boolean;
     };
   }
+}

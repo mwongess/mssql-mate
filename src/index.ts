@@ -1,5 +1,5 @@
 import mssql from "mssql";
-import { Config } from "./types/config";
+import { Config } from "mssql-mate";
 
 
 export class Connection {
