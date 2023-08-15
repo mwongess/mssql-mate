@@ -24,6 +24,49 @@ $ npm install mssql-mate
 
 ## Usage
 
+
+### Problem =>(Too many connection & inputs)
+Initially you would be writing something like
+
+```javascript
+
+// Create a product
+export const createProduct = async (req, res) => {
+const { name, description, price, image_url, inventory_count, category, storage, ram } = req.body;
+// console.log(name, description, price, image_url, inventory_count, category, storage, ram);
+try {
+    let pool = await sql.connect(config.sql);
+    const result = await pool.request()
+        .input('name', sql.VarChar, name)
+        .input('description', sql.VarChar, description)
+        .input('category', sql.VarChar, category)
+        .query('SELECT * FROM Products WHERE name = @name AND description = @description AND category = @category');
+    const user = result.recordset[0];
+    if (user) {
+        res.status(409).json({ error: 'Product already exists' });
+    } else {
+        await pool.request()
+            .input('name', sql.VarChar, name)
+            .input('description', sql.VarChar, description)
+            .input('image_url', sql.VarChar, image_url)
+            .input('price', sql.Int, price)
+            .input('inventory_count', sql.Int, inventory_count)
+            .input('category', sql.VarChar, category)
+            .input('storage', sql.VarChar, storage)
+            .input('ram', sql.VarChar, ram)
+            .query('INSERT INTO Products (name, description, image_url, price, inventory_count, category, storage, ram) VALUES (@name, @description, @image_url, @price, @inventory_count, @category,@storage,@ram)');
+        res.status(200).send({ message: 'Product created successfully' });
+    }
+} catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+} finally {
+    // sql.close();
+}
+}
+```
+
+## Solutions =>(One connection and less code)
 ### Example with procedures
 
 ```javascript
@@ -68,6 +111,8 @@ export const getOneProduct = async (req, res) => {
 };
 
 ```
+
+
 
 ### Example with queries
 
@@ -115,56 +160,6 @@ export const getOneProduct = async (req, res) => {
   }
 };
 ```
-This package saves you time and lines of code.
-Initially you could be writing something like 
-
-```javascript
-// Importing mssql-mate package
-const Connection = require("mssql-mate");
-
-// Your typical config
-const dbConfig = {
-  user: "username",
-  password: "password",
-  server: "server",
-  database: "database",
-  options: {
-    encrypt: false,
-    trustServerCertificate: true,
-  },
-};
-
-// EXAMPLES
-// Executing a query without parameters
-export const getAllProducts = async (req, res) => {
-  try {
-        let pool = await sql.connect(config);
-        const result = await pool.request().query("SELECT * FROM Products");
-    } catch (error) {
-        console.log(error)
-        res.status(201).json({ error: 'an error occurred while retrieving Products' });
-    } finally {
-        sql.close(); // Close the SQL connection
-    }
-};
-
-//Executing a query with parameters
-export const getOneProduct = async (req, res) => {
-   try {
-        const { productID } = req.params;
-        let pool = await sql.connect(config);
-        const result = await pool.request()
-            .input("productID", sql.Int, productID) //Notice the inputs becomes increasingly many when you have several parameters for instance when updating a product.Check the next example
-            .query("SELECT * FROM Products WHERE productID = @productID");
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: 'An error occurred while retrieving a Product' });
-    } finally {
-        sql.close();
-    }
-};
-```
-
 
 ## Contributing
 
