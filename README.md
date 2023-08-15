@@ -35,7 +35,7 @@ export const createProduct = async (req, res) => {
 const { name, description, price, image_url, inventory_count, category, storage, ram } = req.body;
 // console.log(name, description, price, image_url, inventory_count, category, storage, ram);
 try {
-    let pool = await sql.connect(config.sql);
+    let pool = await sql.connect(config);
     const result = await pool.request()
         .input('name', sql.VarChar, name)
         .input('description', sql.VarChar, description)
