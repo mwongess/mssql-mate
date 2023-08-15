@@ -35,4 +35,8 @@ export class Connection {
     params ? (request = this.createRequest(request, params)) : request;
     return await request.query(query);
   }
+
+  async close(): Promise<void>{
+   (await this.pool).close()
+  }
 }
