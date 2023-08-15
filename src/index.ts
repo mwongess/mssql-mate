@@ -1,15 +1,7 @@
 import mssql from "mssql";
+import { Config } from "./types/config";
 
-export interface Config {
-  user: string;
-  password: string;
-  server: string;
-  database: string;
-  options: {
-    encrypt: boolean;
-    trustServerCertificate: boolean;
-  };
-}
+
 export class Connection {
   private config: Config;
   private pool: Promise<mssql.ConnectionPool>;
