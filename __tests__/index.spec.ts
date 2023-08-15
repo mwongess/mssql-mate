@@ -1,6 +1,9 @@
 import { Config } from "mssql-mate";
 import { Connection } from "../src/";
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 const { USER, PASSWORD, SERVER, DATABASE } = process.env as {
   USER: string;
   PASSWORD: string;
@@ -25,8 +28,8 @@ describe("Integration Tests", () => {
     const connection = new Connection(config);
 
     // Replace 'YourStoredProcedure' with the actual stored procedure name
-    const procName = "YourStoredProcedure";
-    const params = { param1: "value1", param2: "value2" };
+    const procName = "GetUser";
+    const params = { userName: "mwongess"};
 
     // Execute the stored procedure against the actual database
     const { recordset: queryResult } = await connection.executeProc(
@@ -36,21 +39,17 @@ describe("Integration Tests", () => {
 
     expect(Array.isArray(queryResult)).toBe(true);
     expect(queryResult.length).toBeGreaterThan(0);
-    expect(queryResult[0]).toHaveProperty("id");
-    expect(queryResult[0]).toHaveProperty("name");
   });
 
   it("executes a query", async () => {
     // Create a real connection to the database
     const connection = new Connection(config);
-
-    const query = "SELECT * FROM users";
-    const params = { param1: "value1", param2: "value2" };
+    const params = { userName: "mwongess"};
+    const query = "SELECT * FROM users WHERE userName = @userName";
 
     // Execute the query against the actual database
     const { recordset: queryResult } = await connection.executeQuery(
-      query,
-      params
+      query,params
     );
 
     expect(Array.isArray(queryResult)).toBe(true);

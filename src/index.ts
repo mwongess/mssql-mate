@@ -30,7 +30,7 @@ export class Connection {
     return await request.execute(procName);
   }
 
-  async executeQuery(query: string, params: { [x: string]: string }) {
+  async executeQuery(query: string, params?: { [x: string]: string }) {
     let request = (await this.pool).request();
     params ? (request = this.createRequest(request, params)) : request;
     return await request.query(query);
