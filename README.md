@@ -134,34 +134,37 @@ const dbConfig = {
   },
 };
 
-// Connect to db
-const db = new Connection(dbConfig);
-
 // EXAMPLES
 // Executing a query without parameters
 export const getAllProducts = async (req, res) => {
   try {
-    const { recordset } = await db.executeQuery("SELECT * FROM products");
-    res.json({ products: recordset });
-  } catch (error) {
-    res.json(error.message);
-  }
+        let pool = await sql.connect(config);
+        const result = await pool.request().query("SELECT * FROM Products");
+    } catch (error) {
+        console.log(error)
+        res.status(201).json({ error: 'an error occurred while retrieving Products' });
+    } finally {
+        sql.close(); // Close the SQL connection
+    }
 };
 
 //Executing a query with parameters
 export const getOneProduct = async (req, res) => {
-  try {
-    const { productID } = req.params;
-    const { recordset } = await db.executeQuery(
-      "SELECT * FROM products WHERE productID = @productID",
-      { productID }
-    );
-    res.json({ product: recordset });
-  } catch (error) {
-    res.json(error.message);
-  }
+   try {
+        const { productID } = req.params;
+        let pool = await sql.connect(config);
+        const result = await pool.request()
+            .input("productID", sql.Int, productID) //Notice the inputs becomes increasingly many when you have several parameters for instance when updating a product.Check the next example
+            .query("SELECT * FROM Products WHERE productID = @productID");
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'An error occurred while retrieving a Product' });
+    } finally {
+        sql.close();
+    }
 };
 ```
+
 
 ## Contributing
 
