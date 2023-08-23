@@ -7,7 +7,6 @@ An exciting npm package ,empowering effortless connectivity, seamless querying, 
 ![Issues](https://img.shields.io/github/issues/mwongess/mssql-mate)
 ![Closed](https://img.shields.io/github/issues-closed/mwongess/mssql-mate)
 ![Closed PR](https://img.shields.io/github/issues-pr-closed/mwongess/mssql-mate)
-![Downloads](https://img.shields.io/github/downloads/mwongess/mssql-mate/total)
 
 ## Table of Contents
 
@@ -19,7 +18,7 @@ An exciting npm package ,empowering effortless connectivity, seamless querying, 
 ## Installation
 
 ```bash
-$ npm install mssql-mate
+$ npm i @mwongess/mssql-mate
 ```
 
 ## Usage
