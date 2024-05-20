@@ -138,7 +138,7 @@ const db = new Connection(dbConfig);
 // Executing procedure without parameters
 export const getAllProducts = async (req, res) => {
   try {
-    const { recordset } = await db.executeProc("SELECT * FROM products");
+    const { recordset } = await db.executeQuery("SELECT * FROM products");
     res.json({ products: recordset });
   } catch (error) {
     res.json(error.message);
